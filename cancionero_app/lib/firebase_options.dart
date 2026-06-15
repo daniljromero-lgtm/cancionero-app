@@ -26,27 +26,28 @@ class DefaultFirebaseOptions {
 
   // ⚠️ REEMPLAZÁ ESTOS VALORES con los de tu proyecto Firebase
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'TU_API_KEY',
-    appId: 'TU_APP_ID',
-    messagingSenderId: 'TU_SENDER_ID',
-    projectId: 'TU_PROJECT_ID',
-    storageBucket: 'TU_PROJECT_ID.appspot.com',
+    apiKey: 'AIzaSyCDW6qQeYPSBvKXyVil0Y4TFjBETLszJao',
+    appId: '1:522780296914:android:d316e031869cb6ddebcf0b',
+    messagingSenderId: '522780296914',
+    projectId: 'cancionerointeractivo',
+    storageBucket: 'cancionerointeractivo.firebasestorage.app',
   );
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'TU_API_KEY',
-    appId: 'TU_APP_ID',
-    messagingSenderId: 'TU_SENDER_ID',
-    projectId: 'TU_PROJECT_ID',
-    storageBucket: 'TU_PROJECT_ID.appspot.com',
+    apiKey: 'AIzaSyCDW6qQeYPSBvKXyVil0Y4TFjBETLszJao',
+    appId: '1:522780296914:web:0b99e4fa3ec9c780ebcf0b',
+    messagingSenderId: '522780296914',
+    projectId: 'cancionerointeractivo',
+    storageBucket: 'cancionerointeractivo.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'TU_API_KEY',
-    appId: 'TU_APP_ID',
-    messagingSenderId: 'TU_SENDER_ID',
-    projectId: 'TU_PROJECT_ID',
-    storageBucket: 'TU_PROJECT_ID.appspot.com',
+    apiKey: 'AIzaSyCDW6qQeYPSBvKXyVil0Y4TFjBETLszJao',
+    appId: '1:522780296914:android:d316e031869cb6ddebcf0b',
+    messagingSenderId: '522780296914',
+    projectId: 'cancionerointeractivo',
+    storageBucket: 'cancionerointeractivo.firebasestorage.app',
     iosBundleId: 'com.cancionero.app',
   );
 }
+
