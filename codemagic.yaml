@@ -9,10 +9,11 @@ workflows:
       - name: Get packages
         script: flutter pub get
       - name: Build APK
+        script: flutter build apk --debug
+      - name: Find and copy APK
         script: |
-          flutter build apk --debug
-          echo "=== Buscando APK ==="
-          find /Users/builder/clone -name "*.apk" 2>/dev/null
-          find $HOME -name "*.apk" 2>/dev/null
+          APK=$(find . -name "app-debug.apk" | head -1)
+          echo "APK encontrado en: $APK"
+          cp "$APK" /Users/builder/clone/app-debug.apk
     artifacts:
-      - "**/*.apk"
+      - /Users/builder/clone/app-debug.apk
