@@ -8,11 +8,11 @@ workflows:
     scripts:
       - name: Get packages
         script: flutter pub get
-      - name: Build APK with Gradle
+      - name: Build APK
         script: |
-          cd android
-          ./gradlew assembleDebug
-      - name: Find APK location
-        script: find /Users/builder/clone -name "*.apk" 2>/dev/null
+          flutter build apk --debug
+          echo "=== Buscando APK ==="
+          find /Users/builder/clone -name "*.apk" 2>/dev/null
+          find $HOME -name "*.apk" 2>/dev/null
     artifacts:
-      - cancionero_app/android/app/build/outputs/apk/debug/*.apk
+      - "**/*.apk"
