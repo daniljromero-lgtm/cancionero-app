@@ -70,7 +70,7 @@ class DetalleCancionScreen extends StatelessWidget {
                     : '(Sin letra cargada)',
                 style: GoogleFonts.lato(
                   color: cancion.letra.isNotEmpty
-                      ? Colors.white87
+                      ? Colors.white.withOpacity(0.87)
                       : Colors.white38,
                   fontSize: 16,
                   height: 1.8,
