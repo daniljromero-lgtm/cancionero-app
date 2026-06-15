@@ -1,0 +1,21 @@
+android {
+    compileSdkVersion 34
+    defaultConfig {
+        applicationId "com.cancionero.app"
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0.0"
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.google.firebase:firebase-bom:33.0.0'
+}
+
+apply plugin: 'com.google.gms.google-services'
