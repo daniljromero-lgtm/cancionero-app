@@ -1,21 +1,16 @@
 workflows:
   android-workflow:
     name: Android APK Debug
-    max_build_duration: 30
+    max_build_duration: 60
     environment:
       flutter: stable
+    working_directory: cancionero_app
     scripts:
-      - name: Get Flutter packages
-        script: |
-          cd cancionero_app
-          flutter pub get
+      - name: Get packages
+        script: flutter pub get
       - name: Build APK
-        script: |
-          cd cancionero_app
-          flutter build apk --debug
-      - name: Copy APK
-        script: |
-          find /Users/builder/clone/cancionero_app/build -name "*.apk" -exec cp {} /Users/builder/clone/cancionero_app/app-debug.apk \;
+        script: flutter build apk --debug --output-dir=/Users/builder/clone/output
+      - name: List output
+        script: find /Users/builder/clone -name "*.apk" 2>/dev/null || echo "No APK found"
     artifacts:
-      - cancionero_app/**/*.apk
-      - cancionero_app/app-debug.apk
+      - /Users/builder/clone/output/*.apk
