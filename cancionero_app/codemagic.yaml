@@ -13,5 +13,9 @@ workflows:
         script: |
           cd cancionero_app
           flutter build apk --debug
+      - name: Copy APK
+        script: |
+          find /Users/builder/clone/cancionero_app/build -name "*.apk" -exec cp {} /Users/builder/clone/cancionero_app/app-debug.apk \;
     artifacts:
-      - cancionero_app/build/app/outputs/flutter-apk/app-debug.apk
+      - cancionero_app/**/*.apk
+      - cancionero_app/app-debug.apk
