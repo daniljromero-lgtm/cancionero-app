@@ -261,12 +261,12 @@ class _PresentacionScreenState
                     ],
                   ),
                   IconButton(
-                    onPressed: _indiceActual < _canciones.length - 1
+                    onPressed: (_indiceActual < _canciones.length - 1)
                         ? _siguiente
                         : null,
                     icon: Icon(
                       Icons.skip_next_rounded,
-                      color: _indiceActual < _canciones.length - 1
+                      color: (_indiceActual < _canciones.length - 1)
                           ? const Color(0xFFE8C87A)
                           : Colors.white24,
                       size: 40,
