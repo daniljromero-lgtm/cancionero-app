@@ -16,7 +16,7 @@ workflows:
       - name: Copy APK
         script: |
           mkdir -p /tmp/artifacts
-          find cancionero_app -name "*.apk" -type f -exec cp {} /tmp/artifacts/ \;
+          find . -name "*.apk" -type f -exec cp {} /tmp/artifacts/ \;
           ls /tmp/artifacts/
     artifacts:
       - /tmp/artifacts/*.apk
