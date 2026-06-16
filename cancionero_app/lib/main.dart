@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
-import 'screens/home_screen.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+void main() {
   runApp(const CancioneroApp());
 }
 
@@ -19,14 +12,15 @@ class CancioneroApp extends StatelessWidget {
     return MaterialApp(
       title: 'Cancionero',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF8B1A1A),
-          brightness: Brightness.dark,
+      home: Scaffold(
+        backgroundColor: Color(0xFF1A0A00),
+        body: Center(
+          child: Text(
+            '🎸 Cancionero funcionando',
+            style: TextStyle(color: Colors.white, fontSize: 24),
+          ),
         ),
-        useMaterial3: true,
       ),
-      home: const HomeScreen(),
     );
   }
 }
