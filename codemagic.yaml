@@ -13,10 +13,5 @@ workflows:
           flutter build apk --debug
           echo "=== APK generado ==="
           find . -name "*.apk" -type f
-      - name: Copy APK
-        script: |
-          mkdir -p /tmp/artifacts
-          find . -name "*.apk" -type f -exec cp {} /tmp/artifacts/ \;
-          ls /tmp/artifacts/
     artifacts:
-      - /tmp/artifacts/*.apk
+      - build/app/outputs/flutter-apk/*.apk
