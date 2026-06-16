@@ -59,10 +59,10 @@ class FirestoreService {
 
   // ─── REPERTORIOS ──────────────────────────────────────────────────────────
 
-  /// Devuelve un stream de todos los repertorios
+  /// Devuelve un stream de todos los repertorios ordenados por nombre
   Stream<List<Repertorio>> todosLosRepertorios() {
     return _repertorios
-        .orderBy('fecha', descending: true)
+        .orderBy('nombre')
         .snapshots()
         .map((snapshot) => snapshot.docs
             .map((doc) => Repertorio.fromFirestore(
@@ -81,33 +81,13 @@ class FirestoreService {
   Future<void> eliminarRepertorio(String docId) async {
     await _repertorios.doc(docId).delete();
   }
-  
-// ─── REPERTORIOS CRUD ─────────────────────────────────────────────────────
 
-  Stream<List<Repertorio>> todosLosRepertorios() {
-    return _repertorios
-        .orderBy('nombre')
-        .snapshots()
-        .map((snapshot) => snapshot.docs
-            .map((doc) => Repertorio.fromFirestore(
-                  doc.data() as Map<String, dynamic>,
-                  doc.id,
-                ))
-            .toList());
-  }
-
-  Future<void> agregarRepertorio(Repertorio repertorio) async {
-    await _repertorios.add(repertorio.toFirestore());
-  }
-
-  Future<void> eliminarRepertorio(String docId) async {
-    await _repertorios.doc(docId).delete();
-  }
-
+  /// Actualiza un repertorio existente
   Future<void> actualizarRepertorio(String docId, Repertorio repertorio) async {
     await _repertorios.doc(docId).update(repertorio.toFirestore());
   }
 
+  /// Devuelve las canciones correspondientes a una lista de IDs
   Future<List<Cancion>> cancionesPorIds(List<String> ids) async {
     if (ids.isEmpty) return [];
     final List<Cancion> resultado = [];
@@ -120,3 +100,4 @@ class FirestoreService {
     }
     return resultado;
   }
+}
