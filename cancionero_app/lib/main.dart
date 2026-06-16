@@ -1,3 +1,4 @@
+import 'screens/pantalla_inicio.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -33,7 +34,7 @@ class CancioneroApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const PantallaInicio(),
     );
   }
 }
