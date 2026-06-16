@@ -81,4 +81,42 @@ class FirestoreService {
   Future<void> eliminarRepertorio(String docId) async {
     await _repertorios.doc(docId).delete();
   }
-}
+  
+// ─── REPERTORIOS CRUD ─────────────────────────────────────────────────────
+
+  Stream<List<Repertorio>> todosLosRepertorios() {
+    return _repertorios
+        .orderBy('nombre')
+        .snapshots()
+        .map((snapshot) => snapshot.docs
+            .map((doc) => Repertorio.fromFirestore(
+                  doc.data() as Map<String, dynamic>,
+                  doc.id,
+                ))
+            .toList());
+  }
+
+  Future<void> agregarRepertorio(Repertorio repertorio) async {
+    await _repertorios.add(repertorio.toFirestore());
+  }
+
+  Future<void> eliminarRepertorio(String docId) async {
+    await _repertorios.doc(docId).delete();
+  }
+
+  Future<void> actualizarRepertorio(String docId, Repertorio repertorio) async {
+    await _repertorios.doc(docId).update(repertorio.toFirestore());
+  }
+
+  Future<List<Cancion>> cancionesPorIds(List<String> ids) async {
+    if (ids.isEmpty) return [];
+    final List<Cancion> resultado = [];
+    for (final id in ids) {
+      final doc = await _canciones.doc(id).get();
+      if (doc.exists) {
+        resultado.add(Cancion.fromFirestore(
+            doc.data() as Map<String, dynamic>, doc.id));
+      }
+    }
+    return resultado;
+  }
