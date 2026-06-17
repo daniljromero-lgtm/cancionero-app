@@ -28,11 +28,11 @@ jobs:
         working-directory: cancionero_app
 
       - name: Build APK
-        run: flutter build apk --debug
+        run: flutter build apk
         working-directory: cancionero_app
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug-apk
-          path: cancionero_app/build/app/outputs/flutter-apk/app-debug.apk
+          name: app-cancionero-apk
+          path: cancionero_app/build/app/outputs/flutter-apk/*.apk
